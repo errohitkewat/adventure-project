@@ -44,13 +44,12 @@ type Activity = {
   includes: string[];
 };
 
-const activities: Activity[]  = [
+const activities: Activity[] = [
   {
     id: 1,
     icon: Waves,
     title: "River Rafting",
-    image:
-      "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=1200&auto=format&fit=crop",
+    image: "/images/rafting.jpg",
     shortDesc:
       "Enjoy thrilling river rafting in Manali with safe guidance and exciting water adventure.",
     fullDesc:
@@ -78,8 +77,7 @@ const activities: Activity[]  = [
     id: 2,
     icon: Wind,
     title: "Paragliding",
-    image:
-      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop",
+    image: "/images/paragliding.jpg",
     shortDesc:
       "Fly above the valley and enjoy premium paragliding packages with optional media coverage.",
     fullDesc:

@@ -19,7 +19,7 @@ const AboutSection = () => {
 
           <p className="text-gray-300 text-base md:text-lg leading-8 max-w-2xl mb-8">
             We help travelers experience the thrill of Manali through exciting
-            outdoor activities like river rafting, paragliding, bungee jumping,
+            outdoor activities like river rafting, paragliding,
             and more. Our goal is to make your trip more adventurous, more
             memorable, and easy to book.
           </p>

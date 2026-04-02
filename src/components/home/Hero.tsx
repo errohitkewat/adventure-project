@@ -28,8 +28,8 @@ const Hero = () => {
         </h1>
 
         <p className="mt-4 max-w-xs sm:max-w-md md:max-w-xl text-sm sm:text-base md:text-lg lg:text-xl tracking-wide leading-6 sm:leading-7">
-          Comfortable camping tours for couples and families with kids of any
-          age.
+          Feel the thrill. Live the adventure. Explore the best experiences in
+          Manali.
         </p>
 
         <div className="mt-8 flex flex-col sm:flex-row gap-4 sm:gap-5">
