@@ -16,8 +16,8 @@ const Footer = () => {
         </div>
 
         {/* Center - Links */}
-        <div>
-          <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+        <div className="lg:pl-30">
+          <h3 className="text-lg font-semibold  mb-4">Quick Links</h3>
           <ul className="space-y-3 text-gray-400 text-sm">
             <li className="hover:text-amber-500 cursor-pointer transition">
               Home

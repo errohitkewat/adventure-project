@@ -68,7 +68,7 @@ const ContactSection = () => {
             <textarea
               rows={5}
               placeholder="Your Message"
-              className="w-full bg-white/10 border border-white/10 rounded-xl px-4 py-3 outline-none placeholder:text-gray-400"
+              className="w-full bg-white/10 border resize-none border-white/10 rounded-xl px-4 py-3 outline-none placeholder:text-gray-400"
             />
             <button
               type="submit"

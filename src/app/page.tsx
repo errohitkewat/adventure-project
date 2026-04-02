@@ -18,8 +18,8 @@ export default function HomePage() {
         <Hero />
         <AboutSection />
         <ActivitiesSection />
-        <GallerySection />
         <BookingSection />
+        <GallerySection />
         <TestimonialsSection />
         <ContactSection />
       </main>

@@ -5,6 +5,12 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
   images: {
     domains: ["images.unsplash.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "randomuser.me",
+      },
+    ],
   },
 };
 

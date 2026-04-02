@@ -21,7 +21,7 @@ const Hero = () => {
         </h1>
 
         <h1 className="mt-1 flex flex-wrap items-end gap-2 sm:gap-3 text-5xl sm:text-6xl md:text-7xl lg:text-9xl font-bold leading-none">
-          <span className="text-amber-500 font-medium text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+          <span className="text-amber-500 h-full pt-3 font-medium text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
             to
           </span>
           <span>Manali</span>
@@ -33,7 +33,7 @@ const Hero = () => {
         </p>
 
         <div className="mt-8 flex flex-col sm:flex-row gap-4 sm:gap-5">
-          <button className="bg-amber-500 hover:bg-amber-600 transition px-6 sm:px-8 py-3 rounded-full font-semibold shadow-lg text-sm sm:text-base">
+          <button className="bg-amber-500 text-black hover:bg-amber-600 transition px-6 sm:px-8 py-3 rounded-full font-semibold shadow-lg text-sm sm:text-base">
             Book Your Ride
           </button>
 

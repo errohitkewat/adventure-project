@@ -8,3 +8,18 @@ body{
   font-family: "Montserrat", sans-serif;
 }
 
+
+
+
+/* Hide scrollbar but keep scroll working */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+  scroll-behavior: smooth;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE */
+  scrollbar-width: none; /* Firefox */
+  scroll-behavior: smooth;
+}
+
