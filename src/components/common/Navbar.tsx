@@ -10,7 +10,7 @@ const Navbar = () => {
 
   return (
     <div className="fixed top-3 left-1/2 -translate-x-1/2 z-50 w-full px-4 sm:px-6 md:px-10 lg:px-24">
-      <nav className="mx-auto max-w-7xl rounded-[28px] backdrop-blur-md bg-white/5 border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.4)] px-4 sm:px-6 md:px-8 py-3">
+      <nav className="mx-auto max-w-7xl rounded-[30px] backdrop-blur-md bg-white/5 border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.4)] px-4 sm:px-6 md:px-8 py-3">
         <div className="flex items-center justify-between text-white">
           {/* Logo */}
           <div className="flex items-center gap-2 min-w-0">
