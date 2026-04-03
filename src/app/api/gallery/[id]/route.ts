@@ -16,7 +16,7 @@ export async function DELETE(_req: Request, context: Context) {
   try {
     const { id } = await context.params;
 
-    const image = await prisma.galleryImage.findUnique({
+    const image = await prisma.gallery.findUnique({
       where: { id },
     });
 
@@ -31,7 +31,7 @@ export async function DELETE(_req: Request, context: Context) {
       await cloudinary.uploader.destroy(image.publicId);
     }
 
-    await prisma.galleryImage.delete({
+    await prisma.gallery.delete({
       where: { id },
     });
 

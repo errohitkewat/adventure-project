@@ -3,54 +3,42 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
-model Admin {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  password  String
-  name      String
-  createdAt DateTime @default(now())
-}
-
 model Booking {
-  id            String   @id @default(cuid())
-  customerName  String
-  phone         String
-  email         String
-  activityName  String
-  travelDate    String
-  persons       Int
-  message       String?
-  packageType   String
-  packageLabel  String
-  basePrice     Int
-  addons        String
-  addonTotal    Int
-  grandTotal    Int
-  status        String   @default("pending")
-  scheduledFor  String?
-  adminNotes    String?
-  createdAt     DateTime @default(now())
-}
-
-model GalleryImage {
-  id        String   @id @default(cuid())
-  title     String?
-  imageUrl  String
-  publicId  String?
-  createdAt DateTime @default(now())
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  customerName String
+  phone        String
+  email        String?
+  activityName String
+  travelDate   String
+  persons      Int
+  message      String?
+  packageType  String
+  packageLabel String
+  basePrice    Int
+  addonTotal   Int
+  grandTotal   Int
+  addonDetails Json?
+  status       String   @default("pending")
+  createdAt    DateTime @default(now())
 }
 
 model Review {
-  id         String   @id @default(cuid())
-  name       String
-  role       String
-  review     String
-  rating     Int
-  approved   Boolean  @default(false)
-  featured   Boolean  @default(false)
-  createdAt  DateTime @default(now())
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  role      String
+  review    String
+  rating    Int
+  approved  Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model GalleryImage {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  imageUrl  String
+  caption   String?
+  createdAt DateTime @default(now())
 }

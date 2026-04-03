@@ -1,11 +1,10 @@
 import { NextResponse } from "next/server";
-import { v2 as cloudinary } from "cloudinary";
+import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
+const gallerySchema = z.object({
+  imageUrl: z.string().url(),
+  caption: z.string().optional(),
 });
 
 export async function GET() {
@@ -14,9 +13,9 @@ export async function GET() {
       orderBy: { createdAt: "desc" },
     });
 
-    return NextResponse.json(images);
+    return NextResponse.json({ images });
   } catch (error) {
-    console.error("GET_GALLERY_ERROR", error);
+    console.error("GALLERY_GET_ERROR", error);
     return NextResponse.json(
       { message: "Failed to fetch gallery" },
       { status: 500 }
@@ -26,41 +25,28 @@ export async function GET() {
 
 export async function POST(req: Request) {
   try {
-    const formData = await req.formData();
-    const file = formData.get("file") as File | null;
-    const title = (formData.get("title") as string | null) || "";
+    const body = await req.json();
+    const parsed = gallerySchema.safeParse(body);
 
-    if (!file) {
+    if (!parsed.success) {
       return NextResponse.json(
-        { message: "Image file is required" },
+        { message: "Invalid gallery data" },
         { status: 400 }
       );
     }
 
-    const bytes = await file.arrayBuffer();
-    const buffer = Buffer.from(bytes);
-    const base64 = `data:${file.type};base64,${buffer.toString("base64")}`;
-
-    const uploaded = await cloudinary.uploader.upload(base64, {
-      folder: "adventure-gallery",
-    });
-
     const image = await prisma.galleryImage.create({
       data: {
-        title,
-        imageUrl: uploaded.secure_url,
-        publicId: uploaded.public_id,
+        imageUrl: parsed.data.imageUrl,
+        caption: parsed.data.caption || "",
       },
     });
 
-    return NextResponse.json({
-      message: "Image uploaded successfully",
-      image,
-    });
+    return NextResponse.json({ image }, { status: 201 });
   } catch (error) {
-    console.error("UPLOAD_GALLERY_ERROR", error);
+    console.error("GALLERY_POST_ERROR", error);
     return NextResponse.json(
-      { message: "Failed to upload image" },
+      { message: "Failed to save gallery image" },
       { status: 500 }
     );
   }

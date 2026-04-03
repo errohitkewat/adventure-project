@@ -4,41 +4,26 @@ import { prisma } from "@/lib/prisma";
 
 const bookingSchema = z.object({
   customerName: z.string().min(2),
-  phone: z.string().min(5),
-  email: z.string().email(),
+  phone: z.string().min(10),
+  email: z.string().optional(),
   activityName: z.string().min(1),
   travelDate: z.string().min(1),
   persons: z.number().min(1),
   message: z.string().optional(),
-  packageType: z.string(),
-  packageLabel: z.string(),
+  packageType: z.string().min(1),
+  packageLabel: z.string().min(1),
   basePrice: z.number().min(0),
-  addons: z.array(z.string()),
-  addonDetails: z.array(
-    z.object({
-      name: z.string(),
-      price: z.number(),
-    })
-  ),
   addonTotal: z.number().min(0),
   grandTotal: z.number().min(0),
+  addonDetails: z
+    .array(
+      z.object({
+        name: z.string(),
+        price: z.number(),
+      })
+    )
+    .optional(),
 });
-
-export async function GET() {
-  try {
-    const bookings = await prisma.booking.findMany({
-      orderBy: { createdAt: "desc" },
-    });
-
-    return NextResponse.json(bookings);
-  } catch (error) {
-    console.error("GET_BOOKINGS_ERROR", error);
-    return NextResponse.json(
-      { message: "Failed to fetch bookings" },
-      { status: 500 }
-    );
-  }
-}
 
 export async function POST(req: Request) {
   try {
@@ -52,34 +37,48 @@ export async function POST(req: Request) {
       );
     }
 
-    const data = parsed.data;
-
     const booking = await prisma.booking.create({
       data: {
-        customerName: data.customerName,
-        phone: data.phone,
-        email: data.email,
-        activityName: data.activityName,
-        travelDate: data.travelDate,
-        persons: data.persons,
-        message: data.message,
-        packageType: data.packageType,
-        packageLabel: data.packageLabel,
-        basePrice: data.basePrice,
-        addons: JSON.stringify(data.addonDetails),
-        addonTotal: data.addonTotal,
-        grandTotal: data.grandTotal,
+        customerName: parsed.data.customerName,
+        phone: parsed.data.phone,
+        email: parsed.data.email || "",
+        activityName: parsed.data.activityName,
+        travelDate: parsed.data.travelDate,
+        persons: parsed.data.persons,
+        message: parsed.data.message || "",
+        packageType: parsed.data.packageType,
+        packageLabel: parsed.data.packageLabel,
+        basePrice: parsed.data.basePrice,
+        addonTotal: parsed.data.addonTotal,
+        grandTotal: parsed.data.grandTotal,
+        addonDetails: parsed.data.addonDetails || [],
       },
     });
 
-    return NextResponse.json({
-      message: "Booking submitted successfully",
-      booking,
-    });
-  } catch (error) {
-    console.error("CREATE_BOOKING_ERROR", error);
     return NextResponse.json(
-      { message: "Failed to create booking" },
+      { message: "Booking submitted successfully", booking },
+      { status: 201 }
+    );
+  } catch (error) {
+    console.error("BOOKING_POST_ERROR", error);
+    return NextResponse.json(
+      { message: "Failed to save booking" },
+      { status: 500 }
+    );
+  }
+}
+
+export async function GET() {
+  try {
+    const bookings = await prisma.booking.findMany({
+      orderBy: { createdAt: "desc" },
+    });
+
+    return NextResponse.json({ bookings });
+  } catch (error) {
+    console.error("BOOKING_GET_ERROR", error);
+    return NextResponse.json(
+      { message: "Failed to fetch bookings" },
       { status: 500 }
     );
   }

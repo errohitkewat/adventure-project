@@ -1,44 +1,22 @@
 import { NextResponse } from "next/server";
-import bcrypt from "bcryptjs";
-import { prisma } from "@/lib/prisma";
-import { adminCookieName, createSessionToken } from "@/lib/auth";
+import { createSessionToken, adminCookieName } from "@/lib/auth";
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { email, password } = body as {
-      email?: string;
-      password?: string;
-    };
+    const { email, password } = body;
 
-    if (!email || !password) {
-      return NextResponse.json(
-        { message: "Email and password are required" },
-        { status: 400 }
-      );
-    }
-
-    const admin = await prisma.admin.findUnique({
-      where: { email },
-    });
-
-    if (!admin) {
+    if (
+      email !== process.env.ADMIN_EMAIL ||
+      password !== process.env.ADMIN_PASSWORD
+    ) {
       return NextResponse.json(
         { message: "Invalid credentials" },
         { status: 401 }
       );
     }
 
-    const isValid = await bcrypt.compare(password, admin.password);
-
-    if (!isValid) {
-      return NextResponse.json(
-        { message: "Invalid credentials" },
-        { status: 401 }
-      );
-    }
-
-    const token = createSessionToken(admin.email);
+    const token = createSessionToken(email);
 
     const response = NextResponse.json({
       message: "Login successful",
@@ -54,9 +32,9 @@ export async function POST(req: Request) {
 
     return response;
   } catch (error) {
-    console.error("LOGIN_ERROR", error);
+    console.error("ADMIN_LOGIN_ERROR", error);
     return NextResponse.json(
-      { message: "Something went wrong" },
+      { message: "Login failed" },
       { status: 500 }
     );
   }

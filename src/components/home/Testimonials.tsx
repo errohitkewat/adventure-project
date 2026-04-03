@@ -96,28 +96,26 @@ const TestimonialsSection = () => {
     setHoveredStar(null);
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setResponseMessage("");
 
     try {
-      // If you already have backend, use your API here
-      // Example:
-      // const res = await fetch("/api/reviews", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify(form),
-      // });
+      const res = await fetch("/api/reviews", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
 
-      // const data = await res.json();
-      // if (!res.ok) {
-      //   setResponseMessage(data.message || "Review submission failed");
-      //   setLoading(false);
-      //   return;
-      // }
+      const data = await res.json();
 
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      if (!res.ok) {
+        setResponseMessage(data.message || "Review submission failed");
+        return;
+      }
 
       setResponseMessage("Thank you! Your review has been submitted.");
       setForm(initialForm);
