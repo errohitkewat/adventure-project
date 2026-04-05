@@ -3,7 +3,7 @@ import { prisma } from "@/lib/prisma";
 
 export async function GET() {
   try {
-    const reviews = await prisma.reviews.findMany({
+    const reviews = await prisma.review.findMany({
       orderBy: { createdAt: "desc" },
     });
 
