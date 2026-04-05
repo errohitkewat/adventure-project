@@ -110,10 +110,10 @@ const GallerySection = () => {
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true, amount: 0.15 }}
-          className="rounded-[32px] border border-white/10 bg-white/5 p-4 backdrop-blur-md md:p-6"
+          className="rounded-4xl border border-white/10 bg-white/5 p-4 backdrop-blur-md md:p-6"
         >
           <div className="relative mb-6 overflow-hidden rounded-[28px]">
-            <div className="relative h-[280px] w-full sm:h-[380px] md:h-[500px] lg:h-[620px]">
+            <div className="relative h-70 w-full sm:h-95 md:h-125 lg:h-155">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={galleryImages[activeIndex]}
@@ -133,7 +133,7 @@ const GallerySection = () => {
                 </motion.div>
               </AnimatePresence>
 
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/40 via-black/10 to-transparent" />
 
               <motion.button
                 whileHover={{ scale: 1.08, x: -2 }}

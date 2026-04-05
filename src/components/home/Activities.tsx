@@ -224,7 +224,7 @@ const ActivitiesSection = () => {
                     />
                   </motion.div>
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#09110d] via-[#09110d]/35 to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-[#09110d] via-[#09110d]/35 to-transparent" />
 
                   <motion.div
                     initial={{ opacity: 0, y: -14 }}
@@ -325,7 +325,7 @@ const ActivitiesSection = () => {
                 <X size={20} />
               </motion.button>
 
-              <div className="relative h-[320px] w-full md:h-[400px]">
+              <div className="relative h-80 w-full md:h-100">
                 <motion.div
                   initial={{ scale: 1.08 }}
                   animate={{ scale: 1 }}
@@ -341,8 +341,8 @@ const ActivitiesSection = () => {
                   />
                 </motion.div>
 
-                <div className="absolute inset-0 bg-gradient-to-t from-[#101915] via-[#101915]/70 to-black/20" />
-                <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-[#101915] via-[#101915]/70 to-black/20" />
+                <div className="absolute inset-0 bg-linear-to-r from-black/55 via-transparent to-transparent" />
 
                 <div className="absolute left-4 right-4 top-4 flex items-start justify-between md:left-8 md:right-24">
                   <motion.div
@@ -459,7 +459,7 @@ const ActivitiesSection = () => {
                         whileHover={{ y: -5 }}
                         className={`rounded-[28px] border p-6 transition ${
                           index === 0
-                            ? "border-amber-500/40 bg-gradient-to-b from-amber-500/15 to-amber-500/5"
+                            ? "border-amber-500/40 bg-linear-to-b from-amber-500/15 to-amber-500/5"
                             : "border-white/10 bg-white/5"
                         }`}
                       >
@@ -560,7 +560,7 @@ const ActivitiesSection = () => {
                   initial={{ opacity: 0, y: 28 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.38, duration: 0.45 }}
-                  className="rounded-[30px] border border-amber-500/20 bg-gradient-to-r from-amber-500/12 via-amber-500/5 to-transparent p-6 md:p-8"
+                  className="rounded-[30px] border border-amber-500/20 bg-linear-to-r from-amber-500/12 via-amber-500/5 to-transparent p-6 md:p-8"
                 >
                   <h4 className="mb-3 text-2xl font-bold text-white md:text-3xl">
                     Ready To Book This Activity?

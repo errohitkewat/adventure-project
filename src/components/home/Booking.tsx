@@ -94,7 +94,7 @@ const BookingSection = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true, amount: 0.15 }}
           whileHover={{ y: -4 }}
-          className="rounded-[32px] border border-white/10 bg-white/5 p-4 backdrop-blur-md md:p-6"
+          className="rounded-4xl border border-white/10 bg-white/5 p-4 backdrop-blur-md md:p-6"
         >
           <BookingForm />
         </motion.div>

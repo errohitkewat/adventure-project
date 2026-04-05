@@ -459,7 +459,7 @@ const BookingForm = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.35 }}
-            className="rounded-[28px] border border-amber-500/20 bg-gradient-to-r from-amber-500/10 to-transparent p-5"
+            className="rounded-[28px] border border-amber-500/20 bg-linear-to-r from-amber-500/10 to-transparent p-5"
           >
             <h4 className="mb-4 text-xl font-semibold text-white">
               Price Summary

@@ -221,7 +221,7 @@ const TestimonialsSection = () => {
                 whileHover={{ y: -8 }}
                 className={`group rounded-[30px] border p-6 backdrop-blur-md transition duration-300 hover:-translate-y-2 ${
                   item.featured
-                    ? "border-amber-500/30 bg-gradient-to-b from-amber-500/10 to-white/5 lg:col-span-2"
+                    ? "border-amber-500/30 bg-linear-to-b from-amber-500/10 to-white/5 lg:col-span-2"
                     : "border-white/10 bg-white/5 hover:border-amber-500/20"
                 }`}
               >
@@ -322,7 +322,7 @@ const TestimonialsSection = () => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.35, ease: "easeOut" }}
-              className="relative w-full max-w-2xl max-h-[97vh] overflow-y-auto hide-scrollbar rounded-[32px] border border-white/10 bg-[#101915] shadow-[0_20px_80px_rgba(0,0,0,0.55)]"
+              className="relative w-full max-w-2xl max-h-[97vh] overflow-y-auto hide-scrollbar rounded-4xl border border-white/10 bg-[#101915] shadow-[0_20px_80px_rgba(0,0,0,0.55)]"
             >
               <motion.button
                 type="button"
@@ -338,7 +338,7 @@ const TestimonialsSection = () => {
                 initial={{ opacity: 0, y: -15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.05, duration: 0.4 }}
-                className="relative overflow-hidden rounded-t-[32px] border-b border-white/10 bg-gradient-to-br from-amber-500/10 via-transparent to-emerald-500/10 p-6 md:p-8"
+                className="relative overflow-hidden rounded-t-4xl border-b border-white/10 bg-linear-to-br from-amber-500/10 via-transparent to-emerald-500/10 p-6 md:p-8"
               >
                 <p className="mb-3 text-sm font-semibold uppercase tracking-[0.3em] text-amber-500">
                   Share Your Experience
@@ -460,7 +460,7 @@ const TestimonialsSection = () => {
 
                 <motion.div
                   variants={fadeUp}
-                  className="rounded-[24px] border border-amber-500/20 bg-gradient-to-r from-amber-500/10 to-transparent p-4"
+                  className="rounded-3xl border border-amber-500/20 bg-linear-to-r from-amber-500/10 to-transparent p-4"
                 >
                   <p className="text-sm leading-7 text-gray-300">
                     Your review may be shown on the website after approval to
